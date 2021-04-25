@@ -19,12 +19,27 @@ public class MainActivity extends AppCompatActivity {
     TextView quiz_1, quiz_2, quiz_3, quiz_4;
 
     RadioGroup rgQuiz1, rgQuiz2, rgQuiz3, rgQuiz4;
+    RadioButton radioBtn_istanbul, radioBtn_vatican_city, radioBtn_river_nile, radioBtn_ethiopia, radioBtn_munich, radioBtn_texas, radioBtn_southampton, radioBtn_barcelona, radioBtn_mozambique, radioBtn_egypt, radioBtn_benue, radioBtn_niger;
     Button btnScore;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        radioBtn_istanbul = (RadioButton) findViewById(R.id.radio_istanbul);
+        radioBtn_vatican_city = (RadioButton) findViewById(R.id.radio_vatican);
+        radioBtn_river_nile = (RadioButton) findViewById(R.id.radio_nile);
+        radioBtn_ethiopia = (RadioButton) findViewById(R.id.radio_ethiopia);
+
+        radioBtn_munich = (RadioButton) findViewById(R.id.radio_munich);
+        radioBtn_texas = (RadioButton) findViewById(R.id.radio_texas);
+        radioBtn_southampton = (RadioButton) findViewById(R.id.radio_southampton);
+        radioBtn_barcelona = (RadioButton) findViewById(R.id.radio_barcelona);
+        radioBtn_mozambique = (RadioButton) findViewById(R.id.radio_mozambique);
+        radioBtn_egypt = (RadioButton) findViewById(R.id.radio_egypt);
+        radioBtn_benue = (RadioButton) findViewById(R.id.radio_benue);
+        radioBtn_egypt = (RadioButton) findViewById(R.id.radio_niger);
 
         header = (TextView) findViewById(R.id.header_txt);
         quest_header1 = (TextView) findViewById(R.id.quest1_txt);
@@ -44,73 +59,49 @@ public class MainActivity extends AppCompatActivity {
 
         btnScore = findViewById(R.id.score_btn);
 
-//        btnScore.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                int checkId1 = rgQuiz1.getCheckedRadioButtonId();
-//                if (checkId1 == -1){
-//                    // No radio buttons are checked
-//                    message(getApplicationContext(), "Kindly select an option");
-//                }else{
-//                    //One of the radio button is checked
-//                    findRadioButton(checkId1);
-//                }
-//                int checkId2 = rgQuiz2.getCheckedRadioButtonId();
-//                int checkId3 = rgQuiz3.getCheckedRadioButtonId();
-//                int checkId4 = rgQuiz4.getCheckedRadioButtonId();
-//
-//
-//
-//            }
-//        });
+        btnScore.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
 
+                int radioId1 = rgQuiz1.getCheckedRadioButtonId();
+                int radioId2 = rgQuiz2.getCheckedRadioButtonId();
+                int radioId3 = rgQuiz3.getCheckedRadioButtonId();
+                int radioId4 = rgQuiz4.getCheckedRadioButtonId();
+
+                if (radioId4 == -1) {
+                    //
+                    Message.message(getApplicationContext(), "Oh! Tough Luck, You didn't answer any quiz correctly");
+                } else {
+                    //
+                    findRadioButton(radioId1, radioId2, radioId3);
+                }
+            }
+        });
     }
 
-//    private void findRadioButton(int checkId1) {
-//        switch (checkId1){
-//            case R.id.radio_istanbul
-//        }
-//    }
+    private void findRadioButton(int radioId1, int radioId2, int radioId3) {
+        switch (radioId1) {
+            case R.id.radio_istanbul:
+            case R.id.radio_vatican:
+            case R.id.radio_nile:
+            case R.id.radio_ethiopia:
+                Message.message(getApplicationContext(), "You answered the three quizzes correctly, Great Job");
+                break;
+        }
 
-    public static void message(Context context, String msg){
-        Toast.makeText(context, msg, Toast.LENGTH_SHORT).show();
-    }
+        switch (radioId2) {
+            case R.id.radio_istanbul:
+            case R.id.radio_vatican:
+            case R.id.radio_nile:
+                Message.message(getApplicationContext(), "You only answered two quizzes correctly, Try harder");
+                break;
+        }
 
-    public void onRadioButtonClicked(View view) {
-        // Is the button now checked?
-//        boolean checked = ((RadioButton) view).isChecked();
-//
-//        //Check which radio button was clicked
-//        switch (view.getId()) {
-//            case R.id.radio_istanbul:
-//                if (checked)
-//                    break;
-//            case R.id.radio_munich:
-//                if (checked)
-//                    break;
-//            case R.id.radio_texas:
-//                if (checked)
-//                    break;
-//        }
-    }
-
-
-    /**
-     * This method is called when the order button is clicked
-     */
-    public void submitQuiz(View view){
-        RadioButton radioBtn_istanbul = (RadioButton) findViewById(R.id.radio_istanbul);
-        RadioButton radioBtn_vatican_city = (RadioButton) findViewById(R.id.radio_vatican);
-        RadioButton radioBtn_river_nile = (RadioButton) findViewById(R.id.radio_nile);
-        RadioButton radioBtn_ethopia = (RadioButton) findViewById(R.id.radio_ethiopia);
-
-        //Is the button now checked?
-        boolean checked = ((RadioButton) view).isChecked();
-
-        if (radioBtn_istanbul.isChecked() && radioBtn_vatican_city.isChecked() && radioBtn_river_nile.isChecked() && radioBtn_ethopia.isChecked()){
-            Toast.makeText(this, "You answered the three quizzes correctly, Great Job", Toast.LENGTH_SHORT).show();
-        }else {
-            Toast.makeText(this, "You only answered zero to two quizzes correctly, Try harder", Toast.LENGTH_SHORT).show();
+        switch (radioId3) {
+            case R.id.radio_istanbul:
+            case R.id.radio_vatican:
+                Message.message(getApplicationContext(), "You answered one quiz correctly, Try Again");
+                break;
         }
     }
 }
