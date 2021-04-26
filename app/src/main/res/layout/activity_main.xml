@@ -50,20 +50,17 @@
                     android:id="@+id/radio_istanbul"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/istanbul"
-                    android:onClick="onRadioButtonClicked"/>
+                    android:text="@string/istanbul" />
                 <RadioButton
                     android:id="@+id/radio_munich"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/munich"
-                    android:onClick="onRadioButtonClicked"/>
+                    android:text="@string/munich" />
                 <RadioButton
                     android:id="@+id/radio_texas"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/texas"
-                    android:onClick="onRadioButtonClicked"/>
+                    android:text="@string/texas"/>
             </RadioGroup>
 
             <TextView
@@ -86,20 +83,17 @@
                     android:id="@+id/radio_southampton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/southampton"
-                    android:onClick="onRadioButtonClicked"/>
+                    android:text="@string/southampton"/>
                 <RadioButton
                     android:id="@+id/radio_vatican"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/vatican"
-                    android:onClick="onRadioButtonClicked"/>
+                    android:text="@string/vatican"/>
                 <RadioButton
                     android:id="@+id/radio_barcelona"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/barcelona"
-                    android:onClick="onRadioButtonClicked"/>
+                    android:text="@string/barcelona"/>
             </RadioGroup>
 
             <TextView
@@ -122,20 +116,17 @@
                     android:id="@+id/radio_mozambique"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/mozambique"
-                    android:onClick="onRadioButtonClicked"/>
+                    android:text="@string/mozambique"/>
                 <RadioButton
                     android:id="@+id/radio_egypt"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/egypt"
-                    android:onClick="onRadioButtonClicked"/>
+                    android:text="@string/egypt"/>
                 <RadioButton
                     android:id="@+id/radio_ethiopia"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/ethiopia"
-                    android:onClick="onRadioButtonClicked"/>
+                    android:text="@string/ethiopia"/>
             </RadioGroup>
 
             <TextView
@@ -158,21 +149,18 @@
                     android:id="@+id/radio_niger"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/niger"
-                    android:onClick="onRadioButtonClicked"/>
+                    android:text="@string/niger"/>
 
                 <RadioButton
                     android:id="@+id/radio_nile"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/nile"
-                    android:onClick="onRadioButtonClicked"/>
+                    android:text="@string/nile"/>
                 <RadioButton
                     android:id="@+id/radio_benue"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/benue"
-                    android:onClick="onRadioButtonClicked"/>
+                    android:text="@string/benue"/>
             </RadioGroup>
 
             <Button

@@ -70,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
 
                 if (radioId4 == -1) {
                     //
-                    Message.message(getApplicationContext(), "Oh! Tough Luck, You didn't answer any quiz correctly");
+                    Message.message(getApplicationContext(), "Oh! Tough Luck, You didn't attempt to answer any question");
                 } else {
                     //
                     findRadioButton(radioId1, radioId2, radioId3);
@@ -85,7 +85,7 @@ public class MainActivity extends AppCompatActivity {
             case R.id.radio_vatican:
             case R.id.radio_nile:
             case R.id.radio_ethiopia:
-                Message.message(getApplicationContext(), "You answered the three quizzes correctly, Great Job");
+                Message.message(getApplicationContext(), "You answered the four quizzes correctly, Great Job");
                 break;
         }
 
@@ -93,15 +93,16 @@ public class MainActivity extends AppCompatActivity {
             case R.id.radio_istanbul:
             case R.id.radio_vatican:
             case R.id.radio_nile:
-                Message.message(getApplicationContext(), "You only answered two quizzes correctly, Try harder");
+                Message.message(getApplicationContext(), "You only answered three quizzes correctly, Try harder");
                 break;
         }
 
         switch (radioId3) {
             case R.id.radio_istanbul:
             case R.id.radio_vatican:
-                Message.message(getApplicationContext(), "You answered one quiz correctly, Try Again");
+                Message.message(getApplicationContext(), "You answered two quiz correctly, Add some heat FAM");
                 break;
         }
+
     }
 }
