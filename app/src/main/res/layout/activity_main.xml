@@ -30,71 +30,75 @@
                 android:textSize="20sp"
                 android:textColor="@color/purple_700"/>
 
-            <TextView
-                android:id="@+id/quest1_txt"
-                android:text="@string/question1"
-                style="@style/QuestionHeaderStyle"/>
+            <LinearLayout
+                android:id="@+id/countries_answer"
+                style="@style/LinearLayoutStyle">
 
-            <TextView
-                android:id="@+id/quiz1_txt"
-                android:text="@string/quiz1"
-                style="@style/QuizHeaderStyle"/>
+                <TextView
+                    android:id="@+id/quest1_txt"
+                    android:text="@string/question1"
+                    style="@style/QuestionHeaderStyle"/>
 
-            <RadioGroup
-                android:id="@+id/radio_quiz1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_marginLeft="15dp">
-                <RadioButton
-                    android:id="@+id/radio_istanbul"
+                <TextView
+                    android:id="@+id/quiz1_txt"
+                    android:text="@string/quiz1"
+                    style="@style/QuizHeaderStyle"/>
+
+                <EditText
+                    android:id="@+id/edit_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/istanbul" />
-                <RadioButton
-                    android:id="@+id/radio_munich"
+                    android:layout_marginLeft="15dp"
+                    android:orientation="vertical"
+                    android:hint="Enter answer here">
+                </EditText>
+
+            </LinearLayout>
+
+            <!-- Line separator -->
+            <View style="@style/line_separator_style" />
+
+            <LinearLayout
+                android:id="@+id/small_countries_answer"
+                style="@style/LinearLayoutStyle">
+
+                <TextView
+                    android:id="@+id/quest2_txt"
+                    android:text="@string/question2"
+                    style="@style/QuestionHeaderStyle"/>
+
+                <TextView
+                    android:id="@+id/quiz2_txt"
+                    android:text="@string/quiz2"
+                    style="@style/QuizHeaderStyle"/>
+
+                <CheckBox
+                    android:id="@+id/checkbox_southampton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/munich" />
-                <RadioButton
-                    android:id="@+id/radio_texas"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/texas"/>
-            </RadioGroup>
-
-            <TextView
-                android:id="@+id/quest2_txt"
-                android:text="@string/question2"
-                style="@style/QuestionHeaderStyle"/>
-
-            <TextView
-                android:id="@+id/quiz2_txt"
-                android:text="@string/quiz2"
-                style="@style/QuizHeaderStyle"/>
-
-            <RadioGroup
-                android:id="@+id/radio_quiz2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_marginLeft="15dp">
-                <RadioButton
-                    android:id="@+id/radio_southampton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginLeft="15dp"
                     android:text="@string/southampton"/>
-                <RadioButton
-                    android:id="@+id/radio_vatican"
+                <CheckBox
+                    android:id="@+id/checkbox_vatican"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginLeft="15dp"
                     android:text="@string/vatican"/>
-                <RadioButton
-                    android:id="@+id/radio_barcelona"
+                <CheckBox
+                    android:id="@+id/checkbox_monaco"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/barcelona"/>
-            </RadioGroup>
+                    android:orientation="vertical"
+                    android:layout_marginLeft="15dp"
+                    android:text="@string/principal_of_monaco"/>
+
+
+            </LinearLayout>
+
+            <!-- Line separator -->
+            <View style="@style/line_separator_style" />
 
             <TextView
                 android:id="@+id/quest3_txt"
@@ -107,7 +111,7 @@
                 style="@style/QuizHeaderStyle"/>
 
             <RadioGroup
-                android:id="@+id/radio_quiz3"
+                android:id="@+id/colonize_answer"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
@@ -128,6 +132,8 @@
                     android:layout_height="wrap_content"
                     android:text="@string/ethiopia"/>
             </RadioGroup>
+            <!-- Line separator -->
+            <View style="@style/line_separator_style" />
 
             <TextView
                 android:id="@+id/quest4_txt"
@@ -140,11 +146,12 @@
                 style="@style/QuizHeaderStyle"/>
 
             <RadioGroup
-                android:id="@+id/radio_quiz4"
+                android:id="@+id/river_answer"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:layout_marginLeft="15dp">
+
                 <RadioButton
                     android:id="@+id/radio_niger"
                     android:layout_width="wrap_content"
@@ -163,12 +170,16 @@
                     android:text="@string/benue"/>
             </RadioGroup>
 
+            <!-- Line separator -->
+            <View style="@style/line_separator_style" />
+
             <Button
                 android:id="@+id/score_btn"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:background="#388E3C"
                 android:text="@string/submit"
+                android:onClick="gradeQuiz"
                 android:textAllCaps="true"
                 android:layout_gravity="center_horizontal"
                 android:layout_margin="5dp"/>

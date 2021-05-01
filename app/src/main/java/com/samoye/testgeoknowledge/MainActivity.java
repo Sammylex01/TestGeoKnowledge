@@ -5,7 +5,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
@@ -13,96 +16,144 @@ import android.widget.Toast;
 
 import com.samoye.testgeoknowledge.R;
 
-public class MainActivity extends AppCompatActivity {
-    TextView header;
-    TextView quest_header1, quest_header2, quest_header3, quest_header4;
-    TextView quiz_1, quiz_2, quiz_3, quiz_4;
+import static com.samoye.testgeoknowledge.R.id.countries_answer;
+import static com.samoye.testgeoknowledge.R.id.small_countries_answer;
+import static com.samoye.testgeoknowledge.R.id.colonize_answer;
+import static com.samoye.testgeoknowledge.R.id.river_answer;
 
-    RadioGroup rgQuiz1, rgQuiz2, rgQuiz3, rgQuiz4;
-    RadioButton radioBtn_istanbul, radioBtn_vatican_city, radioBtn_river_nile, radioBtn_ethiopia, radioBtn_munich, radioBtn_texas, radioBtn_southampton, radioBtn_barcelona, radioBtn_mozambique, radioBtn_egypt, radioBtn_benue, radioBtn_niger;
-    Button btnScore;
+import java.util.ArrayList;
+import java.util.List;
+
+public class MainActivity extends AppCompatActivity {
+
+    private List<ViewGroup> answersLayouts;
+
+    private int numberOfCorrectAnswers;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        radioBtn_istanbul = (RadioButton) findViewById(R.id.radio_istanbul);
-        radioBtn_vatican_city = (RadioButton) findViewById(R.id.radio_vatican);
-        radioBtn_river_nile = (RadioButton) findViewById(R.id.radio_nile);
-        radioBtn_ethiopia = (RadioButton) findViewById(R.id.radio_ethiopia);
-
-        radioBtn_munich = (RadioButton) findViewById(R.id.radio_munich);
-        radioBtn_texas = (RadioButton) findViewById(R.id.radio_texas);
-        radioBtn_southampton = (RadioButton) findViewById(R.id.radio_southampton);
-        radioBtn_barcelona = (RadioButton) findViewById(R.id.radio_barcelona);
-        radioBtn_mozambique = (RadioButton) findViewById(R.id.radio_mozambique);
-        radioBtn_egypt = (RadioButton) findViewById(R.id.radio_egypt);
-        radioBtn_benue = (RadioButton) findViewById(R.id.radio_benue);
-        radioBtn_egypt = (RadioButton) findViewById(R.id.radio_niger);
-
-        header = (TextView) findViewById(R.id.header_txt);
-        quest_header1 = (TextView) findViewById(R.id.quest1_txt);
-        quest_header2 = (TextView) findViewById(R.id.quest2_txt);
-        quest_header3 = (TextView) findViewById(R.id.quest3_txt);
-        quest_header4 = (TextView) findViewById(R.id.quest4_txt);
-
-        quiz_1 = (TextView) findViewById(R.id.quiz1_txt);
-        quiz_2 = (TextView) findViewById(R.id.quiz2_txt);
-        quiz_3 = (TextView) findViewById(R.id.quiz3_txt);
-        quiz_4 = (TextView) findViewById(R.id.quiz4_txt);
-
-        rgQuiz1 = findViewById(R.id.radio_quiz1);
-        rgQuiz2 = findViewById(R.id.radio_quiz2);
-        rgQuiz3 = findViewById(R.id.radio_quiz3);
-        rgQuiz4 = findViewById(R.id.radio_quiz4);
-
-        btnScore = findViewById(R.id.score_btn);
-
-        btnScore.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                int radioId1 = rgQuiz1.getCheckedRadioButtonId();
-                int radioId2 = rgQuiz2.getCheckedRadioButtonId();
-                int radioId3 = rgQuiz3.getCheckedRadioButtonId();
-                int radioId4 = rgQuiz4.getCheckedRadioButtonId();
-
-                if (radioId4 == -1) {
-                    //
-                    Message.message(getApplicationContext(), "Oh! Tough Luck, You didn't attempt to answer any question");
-                } else {
-                    //
-                    findRadioButton(radioId1, radioId2, radioId3);
-                }
-            }
-        });
+        // Initialize and populate the answer
+        answersLayouts = populateAnswers();
     }
 
-    private void findRadioButton(int radioId1, int radioId2, int radioId3) {
-        switch (radioId1) {
-            case R.id.radio_istanbul:
-            case R.id.radio_vatican:
-            case R.id.radio_nile:
-            case R.id.radio_ethiopia:
-                Message.message(getApplicationContext(), "You answered the four quizzes correctly, Great Job");
-                break;
+    /**
+     * This method initializes and populates the answerLayouts list.
+     *
+     * @return The populated List.
+     */
+
+    private List<ViewGroup> populateAnswers() {
+        List<ViewGroup> answers = new ArrayList<>();
+
+        answers.add((ViewGroup) findViewById(countries_answer));
+        answers.add((ViewGroup) findViewById(small_countries_answer));
+        answers.add((ViewGroup) findViewById(colonize_answer));
+        answers.add((ViewGroup) findViewById(river_answer));
+
+        return answers;
+    }
+
+    /**
+     * This method communicates the answer layouts and sends each
+     * one checkAnswers method for evaluation. It then displays
+     * a toast to show the user of their score and resents the
+     * answers.
+     *
+     * @param view was Not used.
+     */
+    public void gradeQuiz(View view) {
+        // Iterate over answerLayouts to check each answer
+        for(ViewGroup answers: answersLayouts) {
+            checkAnswers(answers);
         }
 
-        switch (radioId2) {
-            case R.id.radio_istanbul:
-            case R.id.radio_vatican:
-            case R.id.radio_nile:
-                Message.message(getApplicationContext(), "You only answered three quizzes correctly, Try harder");
-                break;
-        }
+        // Display results to quiz taker
+        String resultsDisplay = "You got " + numberOfCorrectAnswers + " out of " + answersLayouts.size()
+                + " questions correct!";
 
-        switch (radioId3) {
-            case R.id.radio_istanbul:
-            case R.id.radio_vatican:
-                Message.message(getApplicationContext(), "You answered two quiz correctly, Add some heat FAM");
-                break;
-        }
+        Toast toast = Toast.makeText(this, resultsDisplay, Toast.LENGTH_LONG);
+        toast.show();
 
+        // Reset the answers and number of correct answers
+        resetDisplay();
+    }
+
+    private void resetDisplay() {
+        numberOfCorrectAnswers = 0;
+
+        for (ViewGroup viewGroup: answersLayouts){
+            for (int i=0; i < viewGroup.getChildCount(); i++){
+                View view = viewGroup.getChildAt(i);
+                if (view instanceof RadioButton) {
+                    // Cast to RadioButton
+                    RadioButton radioButton = ((RadioButton) view);
+                    // Clear the group
+                    ((RadioGroup)radioButton.getParent()).clearCheck();
+                    break; // Not necessary to clear group multiple times
+                } else if(view instanceof CheckBox) {
+                    ((CheckBox) view).setChecked(false);
+                } else if(view instanceof EditText) {
+                    ((EditText) view).setText("");
+                }
+            }
+        }
+    }
+
+
+    /**
+     * This method checks if the questions have been answered correctly
+     *
+     */
+
+    private void checkAnswers(ViewGroup answersLayout) {
+
+        int id = answersLayout.getId();
+
+        ViewGroup answers;
+
+        if (id == R.id.countries_answer){
+            answers = (ViewGroup) findViewById(R.id.countries_answer);
+
+            EditText answerText = (EditText)answers.getChildAt(0);
+
+            String answer = answerText.getText().toString().trim();
+
+            if(answer.equalsIgnoreCase("istanbul, turkey")) {
+                numberOfCorrectAnswers++;
+            }
+
+        } else if (id == R.id.small_countries_answer){
+            answers = (ViewGroup) findViewById(R.id.small_countries_answer);
+
+            CheckBox vaticanCheckBox = (CheckBox) answers.getChildAt(1);
+            CheckBox monacoCheckBox = (CheckBox) answers.getChildAt(2);
+
+            if (!vaticanCheckBox.isChecked() && monacoCheckBox.isChecked()){
+                numberOfCorrectAnswers++;
+            }
+
+        } else if (id == R.id.colonize_answer){
+            answers = (ViewGroup) findViewById(R.id.colonize_answer);
+
+            RadioButton ethiopiaRadioBtn = (RadioButton) answers.getChildAt(2);
+
+            if (ethiopiaRadioBtn.isChecked()){
+                numberOfCorrectAnswers++;
+            }
+        } else if (id == R.id.river_answer){
+            answers = (ViewGroup) findViewById(R.id.river_answer);
+
+            RadioButton riverNileRadioBtn = (RadioButton) answers.getChildAt(1);
+
+            if (riverNileRadioBtn.isChecked()){
+                numberOfCorrectAnswers++;
+            }
+        } else {
+            // In case an incorrect ViewGroup is passed in
+            throw new IllegalArgumentException();
+        }
     }
 }
