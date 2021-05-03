@@ -117,19 +117,19 @@ public class MainActivity extends AppCompatActivity {
         if (id == R.id.countries_answer){
             answers = (ViewGroup) findViewById(R.id.countries_answer);
 
-            EditText answerText = (EditText)answers.getChildAt(0);
+            EditText answerText = (EditText)answers.findViewById(R.id.edit_text);
 
             String answer = answerText.getText().toString().trim();
 
-            if(answer.equalsIgnoreCase("istanbul, turkey")) {
+            if(answer.equalsIgnoreCase("istanbul")) {
                 numberOfCorrectAnswers++;
             }
 
         } else if (id == R.id.small_countries_answer){
             answers = (ViewGroup) findViewById(R.id.small_countries_answer);
 
-            CheckBox vaticanCheckBox = (CheckBox) answers.getChildAt(1);
-            CheckBox monacoCheckBox = (CheckBox) answers.getChildAt(2);
+            CheckBox vaticanCheckBox = (CheckBox) answers.findViewById(R.id.checkbox_vatican);
+            CheckBox monacoCheckBox = (CheckBox) answers.findViewById(R.id.checkbox_monaco);
 
             if (!vaticanCheckBox.isChecked() && monacoCheckBox.isChecked()){
                 numberOfCorrectAnswers++;
@@ -138,7 +138,7 @@ public class MainActivity extends AppCompatActivity {
         } else if (id == R.id.colonize_answer){
             answers = (ViewGroup) findViewById(R.id.colonize_answer);
 
-            RadioButton ethiopiaRadioBtn = (RadioButton) answers.getChildAt(2);
+            RadioButton ethiopiaRadioBtn = (RadioButton) answers.findViewById(R.id.radio_ethiopia);
 
             if (ethiopiaRadioBtn.isChecked()){
                 numberOfCorrectAnswers++;
@@ -146,7 +146,7 @@ public class MainActivity extends AppCompatActivity {
         } else if (id == R.id.river_answer){
             answers = (ViewGroup) findViewById(R.id.river_answer);
 
-            RadioButton riverNileRadioBtn = (RadioButton) answers.getChildAt(1);
+            RadioButton riverNileRadioBtn = (RadioButton) answers.findViewById(R.id.radio_nile);
 
             if (riverNileRadioBtn.isChecked()){
                 numberOfCorrectAnswers++;
