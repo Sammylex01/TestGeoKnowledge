@@ -130,8 +130,9 @@ public class MainActivity extends AppCompatActivity {
 
             CheckBox vaticanCheckBox = (CheckBox) answers.findViewById(R.id.checkbox_vatican);
             CheckBox monacoCheckBox = (CheckBox) answers.findViewById(R.id.checkbox_monaco);
+            CheckBox southamptonCheckBox = (CheckBox) answers.findViewById(R.id.checkbox_southampton);
 
-            if (!vaticanCheckBox.isChecked() && monacoCheckBox.isChecked()){
+            if (vaticanCheckBox.isChecked() && monacoCheckBox.isChecked() && !southamptonCheckBox.isChecked()){
                 numberOfCorrectAnswers++;
             }
 

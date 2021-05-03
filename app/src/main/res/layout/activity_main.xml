@@ -125,16 +125,19 @@
                     android:id="@+id/radio_mozambique"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textColor="@color/black"
                     android:text="@string/mozambique"/>
                 <RadioButton
                     android:id="@+id/radio_egypt"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textColor="@color/black"
                     android:text="@string/egypt"/>
                 <RadioButton
                     android:id="@+id/radio_ethiopia"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textColor="@color/black"
                     android:text="@string/ethiopia"/>
             </RadioGroup>
             <!-- Line separator -->
@@ -155,24 +158,26 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:textColor="@color/black"
                 android:layout_marginLeft="15dp">
 
                 <RadioButton
                     android:id="@+id/radio_niger"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textColor="@color/black"
                     android:text="@string/niger"/>
 
                 <RadioButton
                     android:id="@+id/radio_nile"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textColor="@color/black"
                     android:text="@string/nile"/>
                 <RadioButton
                     android:id="@+id/radio_benue"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textColor="@color/black"
                     android:text="@string/benue"/>
             </RadioGroup>
 
